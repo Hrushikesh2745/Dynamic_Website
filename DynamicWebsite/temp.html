@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ 
+<head>
+  <meta charset="utf-8">
+  <title>calculator</title>
+  <link rel="stylesheet" href="style.css">
+ <style>
+    body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+    background-image: url('temp.avif');
+    }
+.converter {
+    background-color: #4ce826;
+    padding: 70px;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+h1 {
+    margin-top: 0;
+}
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+#result {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+</style> 
+<script>
+    function convertTemperature() {
+    const inputTemperature = parseFloat(document.getElementById('temperatureInput').value);
+    const selectedUnit = document.getElementById('unitSelector').value;
+    let result;
+
+    if (isNaN(inputTemperature)) {
+        alert('Please enter a valid number.');
+        return;
+    }
+
+    if (selectedUnit === 'celsius') {
+        result = `${inputTemperature}°C is ${((inputTemperature * 9/5) + 32).toFixed(2)}°F`;
+    } else if (selectedUnit === 'fahrenheit') {
+        result = `${inputTemperature}°F is ${((inputTemperature - 32) * 5/9).toFixed(2)}°C`;
+    } else if (selectedUnit === 'kelvin') {
+        result = `${inputTemperature}K is ${(inputTemperature - 273.15).toFixed(2)}°C`;
+    }
+
+    document.getElementById('result').textContent = result;
+}
+</script>
+</head>
+ 
+<body>
+<div class="topnav">
+    <h1 align="center"><b>DYNAMIC WEBSITE</b></h1> 
+    <a class="active" href="Index.html">HOME</a>
+   <a href="simple.html">SimpleCalculator</a>
+   <a href="temp.html">ConvertTempreture</a>
+   <a href="weather.html">weather</a>
+ </div>
+ <br><br>
+<div class="converter">
+    <h1>Temperature Converter</h1>
+    <br><br>
+    <input type="number" id="temperatureInput" placeholder="Enter temperature">
+    <select id="unitSelector">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="kelvin">Kelvin</option>
+    </select>
+    <button onclick="convertTemperature()">Convert</button>
+    <div id="result"></div>
+</div>
+ 
+</body>
+ 
+</html>
